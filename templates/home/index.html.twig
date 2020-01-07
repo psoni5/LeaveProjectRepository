@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+
+{{ render(controller('App\\Controller\\UserProfileController::userProfileAction'))}}
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
