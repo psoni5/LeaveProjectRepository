@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,6 +40,7 @@ class LeaveStatus
      */
     private $updated_at;
 
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\LeaveApplied", mappedBy="status_id")
      */
@@ -47,6 +50,7 @@ class LeaveStatus
     {
         $this->leaveApplieds = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -101,6 +105,7 @@ class LeaveStatus
         return $this;
     }
 
+
     /**
      * @return Collection|LeaveApplied[]
      */
@@ -131,4 +136,5 @@ class LeaveStatus
 
         return $this;
     }
+
 }

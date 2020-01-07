@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,6 +42,7 @@ class EmployeeSkill
      */
     private $updated_at;
 
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\LeaveApplied", mappedBy="manager_id")
      */
@@ -48,6 +52,7 @@ class EmployeeSkill
     {
         $this->leaveApplieds = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -102,6 +107,7 @@ class EmployeeSkill
         return $this;
     }
 
+
     /**
      * @return Collection|LeaveApplied[]
      */
@@ -132,4 +138,6 @@ class EmployeeSkill
 
         return $this;
     }
+
+
 }
