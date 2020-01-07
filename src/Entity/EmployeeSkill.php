@@ -2,6 +2,11 @@
 
 namespace App\Entity;
 
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +41,18 @@ class EmployeeSkill
      * @ORM\Column(type="datetime")
      */
     private $updated_at;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\LeaveApplied", mappedBy="manager_id")
+     */
+    private $leaveApplieds;
+
+    public function __construct()
+    {
+        $this->leaveApplieds = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -89,4 +106,38 @@ class EmployeeSkill
 
         return $this;
     }
+
+
+    /**
+     * @return Collection|LeaveApplied[]
+     */
+    public function getLeaveApplieds(): Collection
+    {
+        return $this->leaveApplieds;
+    }
+
+    public function addLeaveApplied(LeaveApplied $leaveApplied): self
+    {
+        if (!$this->leaveApplieds->contains($leaveApplied)) {
+            $this->leaveApplieds[] = $leaveApplied;
+            $leaveApplied->setManagerId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeaveApplied(LeaveApplied $leaveApplied): self
+    {
+        if ($this->leaveApplieds->contains($leaveApplied)) {
+            $this->leaveApplieds->removeElement($leaveApplied);
+            // set the owning side to null (unless already changed)
+            if ($leaveApplied->getManagerId() === $this) {
+                $leaveApplied->setManagerId(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

@@ -311,6 +311,17 @@
         },
         {
             "name": "doctrine/dbal",
+
+            "version": "v2.10.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/dbal.git",
+                "reference": "c2b8e6e82732a64ecde1cddf9e1e06cb8556e3d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c2b8e6e82732a64ecde1cddf9e1e06cb8556e3d8",
+                "reference": "c2b8e6e82732a64ecde1cddf9e1e06cb8556e3d8",
             "version": "v2.9.3",
             "source": {
                 "type": "git",
@@ -386,10 +397,23 @@
                 "mysql",
                 "persistence",
                 "pgsql",
+
+                "postgresql",
+                "queryobject",
+                "sasql",
+                "sql",
+                "sqlanywhere",
+                "sqlite",
+                "sqlserver",
+                "sqlsrv"
+            ],
+            "time": "2020-01-04T12:56:21+00:00"
+
                 "php",
                 "queryobject"
             ],
             "time": "2019-11-02T22:19:34+00:00"
+
         },
         {
             "name": "doctrine/doctrine-bundle",
