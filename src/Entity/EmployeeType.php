@@ -2,16 +2,14 @@
 
 namespace App\Entity;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\LeaveStatusRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\EmployeeTypeRepository")
  */
-class LeaveStatus
+class EmployeeType
 {
     /**
      * @ORM\Id()
@@ -23,12 +21,12 @@ class LeaveStatus
     /**
      * @ORM\Column(type="integer")
      */
-    private $status_id;
+    private $employee_type_id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $status;
+    private $type;
 
     /**
      * @ORM\Column(type="datetime")
@@ -40,43 +38,41 @@ class LeaveStatus
      */
     private $updated_at;
 
-
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\LeaveApplied", mappedBy="status_id")
+     * @ORM\OneToMany(targetEntity="App\Entity\EmployeeDetail", mappedBy="employee_type")
      */
-    private $leaveApplieds;
+    private $employeeDetails;
 
     public function __construct()
     {
-        $this->leaveApplieds = new ArrayCollection();
+        $this->employeeDetails = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getStatusId(): ?int
+    public function getEmployeeTypeId(): ?int
     {
-        return $this->status_id;
+        return $this->employee_type_id;
     }
 
-    public function setStatusId(int $status_id): self
+    public function setEmployeeTypeId(int $employee_type_id): self
     {
-        $this->status_id = $status_id;
+        $this->employee_type_id = $employee_type_id;
 
         return $this;
     }
 
-    public function getStatus(): ?string
+    public function getType(): ?string
     {
-        return $this->status;
+        return $this->type;
     }
 
-    public function setStatus(string $status): self
+    public function setType(string $type): self
     {
-        $this->status = $status;
+        $this->type = $type;
 
         return $this;
     }
@@ -105,36 +101,34 @@ class LeaveStatus
         return $this;
     }
 
-
     /**
-     * @return Collection|LeaveApplied[]
+     * @return Collection|EmployeeDetail[]
      */
-    public function getLeaveApplieds(): Collection
+    public function getEmployeeDetails(): Collection
     {
-        return $this->leaveApplieds;
+        return $this->employeeDetails;
     }
 
-    public function addLeaveApplied(LeaveApplied $leaveApplied): self
+    public function addEmployeeDetail(EmployeeDetail $employeeDetail): self
     {
-        if (!$this->leaveApplieds->contains($leaveApplied)) {
-            $this->leaveApplieds[] = $leaveApplied;
-            $leaveApplied->setStatusId($this);
+        if (!$this->employeeDetails->contains($employeeDetail)) {
+            $this->employeeDetails[] = $employeeDetail;
+            $employeeDetail->setEmployeeType($this);
         }
 
         return $this;
     }
 
-    public function removeLeaveApplied(LeaveApplied $leaveApplied): self
+    public function removeEmployeeDetail(EmployeeDetail $employeeDetail): self
     {
-        if ($this->leaveApplieds->contains($leaveApplied)) {
-            $this->leaveApplieds->removeElement($leaveApplied);
+        if ($this->employeeDetails->contains($employeeDetail)) {
+            $this->employeeDetails->removeElement($employeeDetail);
             // set the owning side to null (unless already changed)
-            if ($leaveApplied->getStatusId() === $this) {
-                $leaveApplied->setStatusId(null);
+            if ($employeeDetail->getEmployeeType() === $this) {
+                $employeeDetail->setEmployeeType(null);
             }
         }
 
         return $this;
     }
-
 }
