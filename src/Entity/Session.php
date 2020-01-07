@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +32,16 @@ class Session
      * @ORM\Column(type="datetime")
      */
     private $updated_at;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\LeaveApplied", mappedBy="start_session_id")
+     */
+    private $leaveApplieds;
+
+    public function __construct()
+    {
+        $this->leaveApplieds = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -68,6 +80,37 @@ class Session
     public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LeaveApplied[]
+     */
+    public function getLeaveApplieds(): Collection
+    {
+        return $this->leaveApplieds;
+    }
+
+    public function addLeaveApplied(LeaveApplied $leaveApplied): self
+    {
+        if (!$this->leaveApplieds->contains($leaveApplied)) {
+            $this->leaveApplieds[] = $leaveApplied;
+            $leaveApplied->setStartSessionId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeaveApplied(LeaveApplied $leaveApplied): self
+    {
+        if ($this->leaveApplieds->contains($leaveApplied)) {
+            $this->leaveApplieds->removeElement($leaveApplied);
+            // set the owning side to null (unless already changed)
+            if ($leaveApplied->getStartSessionId() === $this) {
+                $leaveApplied->setStartSessionId(null);
+            }
+        }
 
         return $this;
     }

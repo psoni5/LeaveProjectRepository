@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +37,16 @@ class LeaveStatus
      * @ORM\Column(type="datetime")
      */
     private $updated_at;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\LeaveApplied", mappedBy="status_id")
+     */
+    private $leaveApplieds;
+
+    public function __construct()
+    {
+        $this->leaveApplieds = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -85,6 +97,37 @@ class LeaveStatus
     public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LeaveApplied[]
+     */
+    public function getLeaveApplieds(): Collection
+    {
+        return $this->leaveApplieds;
+    }
+
+    public function addLeaveApplied(LeaveApplied $leaveApplied): self
+    {
+        if (!$this->leaveApplieds->contains($leaveApplied)) {
+            $this->leaveApplieds[] = $leaveApplied;
+            $leaveApplied->setStatusId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeaveApplied(LeaveApplied $leaveApplied): self
+    {
+        if ($this->leaveApplieds->contains($leaveApplied)) {
+            $this->leaveApplieds->removeElement($leaveApplied);
+            // set the owning side to null (unless already changed)
+            if ($leaveApplied->getStatusId() === $this) {
+                $leaveApplied->setStatusId(null);
+            }
+        }
 
         return $this;
     }
