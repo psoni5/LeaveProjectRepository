@@ -87,11 +87,11 @@ class Session
 
         return $this;
 
-
+    }
     /**
      * @return Collection|LeaveApplied[]
      */
-    public function getLeaveApplieds(): Collection
+    public  function getLeaveApplieds(): Collection
     {
         return $this->leaveApplieds;
     }
@@ -120,3 +120,4 @@ class Session
     }
 
 }
+
