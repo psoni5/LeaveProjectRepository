@@ -191,4 +191,5 @@ class EmployeeDetail
 
         return $this;
     }
+    
 }

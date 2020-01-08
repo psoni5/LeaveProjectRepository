@@ -86,8 +86,8 @@ class Session
         $this->updated_at = $updated_at;
 
         return $this;
-
-
+    }
+    
     /**
      * @return Collection|LeaveApplied[]
      */

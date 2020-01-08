@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} EditProfile{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    
+	
+	{{ form_start(EditProfile) }}
+	    {{ form_row(EditProfile.name) }}
+        {{ form_row(EditProfile.email) }}
+        {{ form_row(EditProfile.gender) }}
+        {{ form_row(EditProfile.date_of_birth) }}
+        {{ form_row(EditProfile.designation) }}
+        {{ form_row(EditProfile.employee_type) }}
+        
+        
+
+    <button class="btn btn-info btn-lg btn-block" type="submit"> Submit </button>
+    {{ form_end(EditProfile) }}
+    
+</div>
+{% endblock %}
