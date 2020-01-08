@@ -5,11 +5,14 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-
+    /**
+     * @Route("/home")
+     */
 class HomeController extends AbstractController
 {
-	/**
-     * @Route("/home", name="home")
+	
+     /**
+     * @Route("/", name="home_page")
      */
     
     public function homeAction()

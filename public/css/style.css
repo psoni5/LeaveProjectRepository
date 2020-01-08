@@ -10,6 +10,19 @@
 
 }
 
+    .bg-img {
+  /* The image used */
+  background-image: url("img_nature.jpg");
+
+  /* Control the height of the image */
+  min-height: 850px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
 
 /*
 .shadow-box {
@@ -90,6 +103,8 @@ body{
 
 
 /*apply leave*/
+
+
 .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
