@@ -6,6 +6,9 @@ use App\Entity\EmployeeDetail;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class EditProfileType extends AbstractType
 {
@@ -14,13 +17,22 @@ class EditProfileType extends AbstractType
         $builder
             
             ->add('name')
-            ->add('email')
-            ->add('gender')
-     
-            ->add('designation')
-            ->add('date_of_birth')
             
-            ->add('employee_type')
+            ->add('gender', ChoiceType::class, [
+                'choices'  => [
+                    'Male' => 'male',
+                    'Female' => 'female',
+                    
+                ],
+            ])
+            
+     
+            
+            ->add('date_of_birth',BirthdayType::class, [
+                'placeholder' => 'Select a value','years' => range(1900,2100)
+            ])
+            
+            
         ;
     }
 

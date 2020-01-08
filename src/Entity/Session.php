@@ -86,12 +86,17 @@ class Session
         $this->updated_at = $updated_at;
 
         return $this;
+<<<<<<< HEAD
     }
     
+=======
+
+    }
+>>>>>>> 332b95b984f06d219ce0c35594dc872ec526185e
     /**
      * @return Collection|LeaveApplied[]
      */
-    public function getLeaveApplieds(): Collection
+    public  function getLeaveApplieds(): Collection
     {
         return $this->leaveApplieds;
     }
@@ -120,3 +125,4 @@ class Session
     }
 
 }
+

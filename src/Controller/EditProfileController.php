@@ -18,7 +18,7 @@ class EditProfileController extends AbstractController
     /**
      * @Route("/edit_profile", name="edit_profile")
      */
-    public function editprofile(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
+    public function editprofile(Request $request): Response
     {   
         
         $user = $this->getUser();
@@ -30,8 +30,13 @@ class EditProfileController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() ) {
-            $today = date("Y-m-d H:i:s"); 
-            $employee->setUpdatedAt($today);
+            
+            $dt = new \DateTime();
+            $tz = new \DateTimeZone("Asia/Kolkata");
+            $dt->setTimezone($tz);
+            
+            
+            $employee->setUpdatedAt($dt);
             $entityManager->flush();
 
             return $this->redirect($this->generateUrl('home'));
