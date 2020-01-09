@@ -5,9 +5,9 @@
 
 
 
-<div class="container border border-primary apply_leave">
+<div class="container box-border  apply_leave">
 
-<div class="row border border-danger" >
+<div class="row box-border " >
 <div class="col-lg-12">
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
@@ -16,23 +16,48 @@
 
 </div> {# end of row #}
 
+{# ============ admin section=========== #}
+
 <div class="row ">
-<div class="col-lg-3 sidenav  border border-success"> {# admin section  #}
+<div class="col-lg-3 sidenav box-border "> 
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 </p>
 </div>
 
-<div class="col-lg-6 border border-success"> {# apply leave form #}
+{# ===========start apply leave form ======== #}
+
+<div class="col-lg-6 box-border ">
+
+{{ form_start(form)}}
+
+{{ form_row(form.leave_type) }}
+{{form_row(form.manager_id,{'label':'manager'})}}
+{{ form_row(form.reason_message) }}
+{{ form_row(form.start_session_id, { 'label': 'start_session' }) }}
+{{ form_row(form.end_session) }}
+
+{{ form_end(form) }}
 
 </div>
 
-<div class="col-lg-3">
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+{# ===========end apply leave form ======== #}
 
-</p>
+
+
+{# ========== start list of Holiday============ #}
+
+<div class="col-lg-3 box-border scrollit"> 
+
+{{ render(controller('App\\Controller\\HolidayController::HolidayListAction'))}}
+
+
 </div>
+
+{# ========== end list of  Holiday============ #}
+
+
 </div> {# end of row #}
 </div> {# end of container #}
 

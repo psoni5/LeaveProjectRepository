@@ -22,14 +22,4 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
-
-	/**
-     * @Route("/apply-leave", name="apply_leave")
-     */
-
-    public function applyLeaveAction()
-    {
-
-        return $this->render('apply_leave/apply_leave.html.twig');
-    }
 }

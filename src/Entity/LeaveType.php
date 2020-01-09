@@ -148,4 +148,8 @@ class LeaveType
 
         return $this;
     }
+
+    public function __toString() {
+        return $this->leave_type;
+    }
 }
