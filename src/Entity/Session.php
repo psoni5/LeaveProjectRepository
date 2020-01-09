@@ -86,13 +86,7 @@ class Session
         $this->updated_at = $updated_at;
 
         return $this;
-<<<<<<< HEAD
     }
-    
-=======
-
-    }
->>>>>>> 332b95b984f06d219ce0c35594dc872ec526185e
     /**
      * @return Collection|LeaveApplied[]
      */
@@ -122,6 +116,10 @@ class Session
         }
 
         return $this;
+    }
+
+     public function __toString() {
+        return $this->session_type;
     }
 
 }

@@ -4,26 +4,34 @@
   bottom: 0;
   right:0;
   width: 100%;
-  background-color: red;
+  background-color:black;
   color: white;
   text-align: center;
 
 }
 
+    .bg-img {
+  /* The image used */
+  background-image: url("img_nature.jpg");
 
-/*
-.shadow-box {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  border:none;
-   font: normal 16px/1 "Lucida Sans Unicode", "Lucida Grande", sans-serif; 
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-  -webkit-box-shadow: 3px 3px 18px 3px rgba(193,216,188,0.91) ;
-   box-shadow: 3px 3px 18px 3px rgba(189,201,187,0.91) ;
+  /* Control the height of the image */
+  min-height: 850px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
-*/
+
+
+/*Holiday*/
+
+.scrollit {
+    overflow:scroll;
+    height:600px;
+    
+}
 
 
 #user-info {
@@ -52,6 +60,7 @@
 
 body{
     padding-top: 68px;
+
   
 }
         .image-container {
@@ -89,11 +98,22 @@ body{
 
 
 
+
+
+
 /*apply leave*/
+
+
 .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
       height: 100%;
     }
+
+.box-border:hover {
+  
+  box-shadow:5px 10px 8px 10px #888888;
+}
+
 
 

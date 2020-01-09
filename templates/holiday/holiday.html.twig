@@ -1,0 +1,25 @@
+
+
+ <table class=" table table-responsive">
+    <thead >
+      <tr>
+        <th style="padding-left:20px;">Holiday Date</th>
+        <th id="description" style="padding-left:40px;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for holiday in holiday_list %}
+      <tr>
+        
+       <td> {{ holiday.date|date('Y-m-d') }}</td>
+        <td class="td-description" style="padding-left:40px;">{{holiday.description}}</td>
+      </tr>
+       <tr>
+        
+       <td> <span>{{ holiday.date|date('Y-m-d') }}</span></td>
+        <td class="td-description" style="padding-left:40px;">{{holiday.description}}</td>
+      </tr>
+  {% endfor %}
+    </tbody>
+  </table>
+</div>
