@@ -1,3 +1,9 @@
+body{
+    padding-top: 68px;
+}
+
+/*Footer*/
+
 #footer {
   position: relative;
   left: 0;
@@ -25,32 +31,77 @@
 }
 
 
+
+/*Table*/
+
+.table thead th {
+     border-bottom:none; 
+}
+
+.table th {
+     border-top:none; 
+}
+
+
+/*user-leave-info*/
+.user-leave-info thead th
+{
+  border-right:4px solid #f5f7f7;
+  text-align: center;
+}
+
+.user-leave-info thead #loss-of-pay
+{
+  border-right:none;
+}
+.user-leave-info tbody tr td
+{
+  border-top:none;
+  text-align:center;
+}
+
+
 /*Holiday*/
 
 .scrollit {
     overflow:scroll;
     height:600px;
-    
+    background: #e3dbd3;
+
+
 }
 
+table tbody .description
+{
+   position: relative;
+   left:15px;
+}
 
-#user-info {
+.Description
+{
+   position: relative;
+   left:100px;
+}
+
+/*Holiday*/
+
+
+.user-info {
   padding: 60px 0 40px 0;
 }
 
-#user-info .box {
+.user-info .box {
   padding: 30px;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
   margin: 0 10px 40px 10px;
-  background: #f9fcff;
-  box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
+  box-shadow: 0 8px 25px 0 rgba(68, 88, 144, 0.1);
   transition: all 0.3s ease-in-out;
   text-align: center;
 }
 
-#user-info .box:hover {
+.user-info .box:hover {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
@@ -58,11 +109,7 @@
 
 /*user profile*/
 
-body{
-    padding-top: 68px;
 
-  
-}
         .image-container {
             position: relative;
         }
@@ -110,7 +157,7 @@ body{
       height: 100%;
     }
 
-.box-border:hover {
+.box:hover {
   
   box-shadow:5px 10px 8px 10px #888888;
 }

@@ -1,10 +1,14 @@
 
 
- <table class=" table table-responsive">
+ <table class="table">
     <thead >
       <tr>
-        <th style="padding-left:20px;">Holiday Date</th>
-        <th id="description" style="padding-left:40px;">Description</th>
+        <th>Holiday Date</th>
+        {% if is_granted("ROLE_USER")%}
+        <th>Description</th>
+      {% else %}
+        <th>Description</th>
+       {% endif %}
       </tr>
     </thead>
     <tbody>
@@ -12,14 +16,88 @@
       <tr>
         
        <td> {{ holiday.date|date('Y-m-d') }}</td>
-        <td class="td-description" style="padding-left:40px;">{{holiday.description}}</td>
-      </tr>
-       <tr>
+        {% if is_granted('ROLE_ADMIN') %}
+        <td class="description">{{holiday.description}}</td>
+
+           <td><a href="" class="btn btn-default btn-primary">Edit</a></td>
+           <td><button class="Delete btn btn-default btn-danger" value="{{ holiday.id}}">Delete</button></td>
+         {% else %}
+        <td>{{holiday.description}}</td>
+        {% endif %}
         
-       <td> <span>{{ holiday.date|date('Y-m-d') }}</span></td>
-        <td class="td-description" style="padding-left:40px;">{{holiday.description}}</td>
       </tr>
+        
+       
+     
+      
+
   {% endfor %}
     </tbody>
   </table>
 </div>
+
+        {% block javascripts %}
+
+           <script type="text/javascript">
+           $('document').ready(function()
+           {
+              var obj=document.getElementsByClassName("Delete");
+             
+              for(var Obj of obj)
+              {
+
+                  Obj.addEventListener("click",function()
+                  {
+
+                    
+                 swal({
+                          title: "Are you sure?",
+                          text: "Once deleted, you will not be able to recover this imaginary file!",
+                          icon: "warning",
+                          buttons: true,
+                          dangerMode: true,
+                        }).then((willDelete) => {
+                          if (willDelete) {
+
+                              var xhttp = new XMLHttpRequest();
+                               xhttp.open("POST", "{{ url('delete') }}", true);
+                               xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                             
+
+                              xhttp.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                 alert(xhttp.responseText);
+
+                              swal("Poof! Your imaginary file has been deleted!", {
+                              icon: "success",
+                              
+                            });
+                              location.reload(true); 
+
+                              };
+                            
+
+                             }
+                             value=this.value;
+                       
+                              xhttp.send("id="+value);
+
+                          }
+                           else {
+                            swal("Your imaginary file is safe!");
+                          }
+                        }
+                        );
+
+                  
+                 }
+                 )
+              }
+            });
+           </script>
+
+        {% endblock %}
+
+
+
+

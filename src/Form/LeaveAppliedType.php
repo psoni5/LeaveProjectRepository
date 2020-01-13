@@ -21,7 +21,7 @@ class LeaveAppliedType extends AbstractType
             ->add('end_date')
             ->add('start_session_id')
             ->add('end_session')
-            ->add('apply', SubmitType::class)
+            ->add('submit', SubmitType::class)
 
             
         ;

@@ -1,0 +1,23 @@
+<table class="table table-resposnsive user-leave-info">
+	<thead>
+		<tr>
+			<th>GL</th>
+			<th>PL</th>
+			<th>MyDay</th>
+			<th>Compensatory</th>
+			<th id="loss-of-pay">LossOfPay</th>
+		</tr>
+    </thead>
+	<tbody>
+		<tr>
+       <td>{{emp_leave_count.getGlTotal-emp_leave_count.getGlOccupied}}<span style=""> / </span>{{emp_leave_count.getGlTotal}}</td>
+       <td>{{emp_leave_count.getPlTotal-emp_leave_count.getPlOccupied}}<span style=""> / </span>{{emp_leave_count.getPlTotal}}</td>
+       <td>{{emp_leave_count.getMyDayTotal-emp_leave_count.getMyDayOccupied}}<span style=""> / </span>{{emp_leave_count.getMyDayTotal}}</td>
+       <td>{{emp_leave_count.getCompenstaryLeaveTotal-emp_leave_count.getCompenstaryLeaveOccupied}}
+        <span style=""> / </span>{{emp_leave_count.getCompenstaryLeaveTotal}}
+       </td>       
+       <td>{{emp_leave_count.getLossOfPay}}</td>
+
+		</tr>
+	</tbody>
+</table>
