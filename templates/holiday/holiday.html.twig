@@ -6,8 +6,10 @@
         <th>Holiday Date</th>
         {% if is_granted("ROLE_USER")%}
         <th>Description</th>
+
       {% else %}
         <th>Description</th>
+
        {% endif %}
       </tr>
     </thead>
@@ -16,7 +18,7 @@
       <tr>
         
        <td> {{ holiday.date|date('Y-m-d') }}</td>
-        {% if is_granted('ROLE_ADMIN') %}
+        {% if is_granted('ROLE_USER') %}
         <td class="description">{{holiday.description}}</td>
 
            <td><a href="" class="btn btn-default btn-primary">Edit</a></td>
@@ -66,7 +68,7 @@
 
                               xhttp.onreadystatechange = function() {
                                 if (this.readyState == 4 && this.status == 200) {
-                                 alert(xhttp.responseText);
+                                
 
                               swal("Poof! Your imaginary file has been deleted!", {
                               icon: "success",
